@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Services\Logger;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -15,6 +16,7 @@ class ProcessStockData implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     private array $data;
+
     public function __construct(array $data)
     {
         $this->data = $data;
@@ -48,7 +50,6 @@ class ProcessStockData implements ShouldQueue
                                 'lowest' => $row[13],
                                 'highest' => $row[14],
                                 'trade_date' => $row[15],
-
                             ],
                         ]
                     ], ['upsert' => true]);
@@ -57,7 +58,8 @@ class ProcessStockData implements ShouldQueue
                 $error_count++;
                 continue;
             }
-
+            $log = array("Successfully inserted" => $success_count, "Error at insert" => $error_count);
+            Logger::Send($log);
         }
     }
 }

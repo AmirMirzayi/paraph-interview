@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Facade;
 
 return [
-
+    'paraf_logger_url' => env('PARAF_LOGGER_URL','https://quiz.paraf.app/job/log.php'),
     /*
     |--------------------------------------------------------------------------
     | Application Name

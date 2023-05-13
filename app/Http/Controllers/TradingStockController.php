@@ -85,7 +85,7 @@ class TradingStockController extends Controller
         StockQuotaRepository::Flush();
         DB::collection('trading_stocks')
             ->where('_id', $request->id)
-            ->where('quota.trade_date', $request->date)
+            ->where('quota.$.trade_date', $request->date)
             ->update([
                 '$set' => [
                     'quota.$' => [

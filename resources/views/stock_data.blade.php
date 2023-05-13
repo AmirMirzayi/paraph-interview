@@ -5,7 +5,7 @@
 @foreach($data as $row)
     نماد سهم: {{ $row->name ?? "" }}
     نام سهم: {{ $row->title ?? "" }}
-    <a href="{{ url("chart",$row->_id) }}" style="font-size: larger;">نمودار</a>
+    <a href="{{ url("chart",$row->_id) }}" style="font-size: larger;">نمودار و جزئیات معاملات</a>
     <table>
         <tr>
             <th>تعداد</th>

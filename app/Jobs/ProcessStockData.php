@@ -58,8 +58,8 @@ class ProcessStockData implements ShouldQueue
                 $error_count++;
                 continue;
             }
-            $log = array("Successfully inserted" => $success_count, "Error at insert" => $error_count);
-            Logger::Send($log);
         }
+        $log = array("Successfully inserted" => $success_count, "Error at insert" => $error_count);
+        Logger::Send($log);
     }
 }
